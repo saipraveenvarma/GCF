@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle, FaHome } from 'react-icons/fa'; // Importing FaHome icon
 import './Header.css';
 
 const Header = () => {
@@ -12,8 +12,9 @@ const Header = () => {
           <span className="header-text">DISASTER RISK REDUCTION AND DECISION SUPPORT SYSTEM</span>
         </div>
       </div>
-      <div className="login-icon">
-        <FaUserCircle />
+      <div className="icon-container">
+        <FaHome className="header-icon" /> {/* Home Icon */}
+        <FaUserCircle className="header-icon" /> {/* User Icon */}
       </div>
     </header>
   );

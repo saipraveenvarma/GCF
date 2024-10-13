@@ -35,13 +35,20 @@ header {
   font-size: 16px; /* Adjust size for the second line */
 }
 
-.login-icon {
-  font-size: 30px;
-  color: #333;
-  cursor: pointer;
-  transition: color 0.3s;
+.icon-container {
+  display: flex; /* Align icons in a row */
+  align-items: center; /* Center icons vertically */
+  gap: 15px; /* Space between icons */
+  margin-left: auto; /* Push icons to the right */
 }
 
-.login-icon:hover {
-  color: #0073b1;
+.header-icon {
+  font-size: 30px; /* Match icon size with the login icon */
+  color: #333; /* Change icon color as needed */
+  cursor: pointer; /* Change cursor to pointer */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.header-icon:hover {
+  color: #0073b1; /* Change color on hover */
 }
