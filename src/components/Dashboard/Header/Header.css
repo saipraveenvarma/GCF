@@ -1,0 +1,47 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center the items vertically */
+  padding: 10px 20px;
+  margin-top: 28px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center; /* Align items vertically */
+}
+
+.logo {
+  max-width: 85px;
+  height: auto;
+  margin-right: 15px; /* Add space between logo and text */
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column; /* Stack the text vertically */
+}
+
+.header-text {
+  color: #333; /* Change text color as needed */
+}
+
+.bold-text {
+  font-size: 50px; /* Increase font size for the bold text */
+  font-weight: bold; /* Make the text bold */
+}
+
+.header-text:not(.bold-text) {
+  font-size: 16px; /* Adjust size for the second line */
+}
+
+.login-icon {
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.login-icon:hover {
+  color: #0073b1;
+}

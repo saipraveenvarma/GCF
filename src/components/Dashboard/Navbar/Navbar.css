@@ -1,0 +1,119 @@
+.navbar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.nav-buttons {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: max-height 0.3s ease;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.nav-button {
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.nav-button:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.info-bar {
+    background-color: #296646;
+    width: 100%;
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.hover-box {
+    position: absolute;
+    background-color: #6bb336;
+    width: 100%;
+    height: auto;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.hover-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hover-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.hover-text {
+    flex: 1;
+    padding: 10px;
+    font-size: 50px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.hover-points {
+    flex: 1;
+    padding: 10px;
+    text-align: left;
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.point {
+    margin: 5px 0;
+    color: white;
+    font-size: 15px;
+    font-weight: normal;
+    padding: 5px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.hover-image {
+    flex: 0 0 100px;
+    padding: 10px;
+}
+
+.hover-image img {
+    width: 40rem;
+    height: auto;
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 30px;
+    margin-top: 10px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+@media (max-width: 768px) {
+    .nav-buttons {
+        display: none;
+    }
+
+    .nav-buttons.open {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}
