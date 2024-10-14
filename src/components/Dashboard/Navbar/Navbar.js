@@ -61,6 +61,7 @@ const Navbar = () => {
     <>
       <nav className="navbar-container">
         <div className={`nav-buttons ${isMenuOpen ? 'open' : ''}`}>
+          <span className="nav-button home-button">Home</span>
           {Object.keys(dropdownData).map((button) => (
             <span
               key={button}
@@ -77,7 +78,6 @@ const Navbar = () => {
         <div className="info-bar">
           <p>EMPOWERING COMMUNITIES, SAFEGUARDING FUTURES</p>
         </div>
-       
       </nav>
       <div className={`hover-box ${hoveredButton ? 'visible' : ''}`} ref={dropdownRef}>
         {hoveredButton && (

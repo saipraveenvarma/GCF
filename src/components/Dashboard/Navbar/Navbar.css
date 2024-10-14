@@ -66,6 +66,10 @@
     padding: 10px;
     font-size: 50px;
     font-family: "Times New Roman", Times, serif;
+    text-decoration: underline;
+    text-decoration-color: white;
+    text-underline-offset: 4px; 
+    text-decoration-thickness: 1px; 
 }
 
 .hover-points {
@@ -116,4 +120,16 @@
     .menu-icon {
         display: block;
     }
+}
+
+.home-button {
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.home-button:hover {
+    color: black;
+    text-decoration: underline;
 }
