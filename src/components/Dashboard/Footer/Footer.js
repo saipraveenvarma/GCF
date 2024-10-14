@@ -37,14 +37,14 @@ const Footer = () => {
           <h3>Contact</h3>
           <p>
             Regional Integrated Multi-Hazard Early Warning System for Africa and
-            Asia (RIMES) 2nd Floor, <br />
+            Asia (RIMES) 2nd Floor,
             Outreach Building Asian Institute of Technology Campus 58 Moo 9
-            Paholyothin Road, <br />
-            Klong Nueng Klong Luang, <br />
+            Paholyothin Road, 
+            Klong Nueng Klong Luang,
             Pathumthani 12120 Thailand <br />
             Tel: +66 25165900 to 01
             <br />
-            Email:sahfhydromet@gmail.com <br />
+            Email:info@rimes.int<br />
             Website: www.rimes.int
           </p>
         </div>
