@@ -18,7 +18,8 @@ const Body = () => {
   return (
     <>
       <div className="video-container">
-        <video 
+        <img src='./view.webp' className='picture'></img>
+        {/* <video 
           src='./Banner/opening-video.mp4' 
           autoPlay 
           loop 
@@ -26,7 +27,7 @@ const Body = () => {
           style={{ width: '100%', height: 'auto' }} 
         >
           Your browser does not support the video tag.
-        </video>
+        </video> */}
       </div>
 
       <div className="content-container">
