@@ -17,7 +17,7 @@ const Cityfire = () => {
   return (
     <>
       <img 
-        src="./Banner/Cityfire.jpg" 
+        src="./Banner/Cityfire.png" 
         className="picture" 
         alt="A relevant description" 
       />      

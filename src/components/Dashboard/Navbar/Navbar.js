@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaArrowRight } from 'react-icons/fa'; // Importing the arrow icon
 import './Navbar.css';
 
 const Navbar = ({ setActiveView }) => {
   const [hoveredButton, setHoveredButton] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeButton, setActiveButton] = useState('Home'); // Track the active button
+  const [activeButton, setActiveButton] = useState('Home'); 
   const dropdownRef = useRef(null);
 
   const dropdownData = {
@@ -16,18 +16,18 @@ const Navbar = ({ setActiveView }) => {
     },
     Landslide: {
       info: "Landslides",
-      points: ["Elevation Data", "Vulnerable Locations", "Slope gradient", "Solid type and composition", "Fault lines", "Rainfall data", "Solid moisture", "Groundwater level", "Triggers/Thresholds", "Alerts/Warning Level"],
+      points: ["Elevation Data", "Vulnerable Locations", "Slope gradient", "Soil type and composition", "Fault lines", "Rainfall data", "Soil moisture", "Groundwater level", "Triggers/Thresholds", "Alerts/Warning Level"],
       image: "./Banner/Landslide.webp",
     },
     Earthquake: {
       info: "Earthquakes",
-      points: ["EQ magnitude", "Depth of focus", "Epicenter", "EQ intensity map", "EQ historical database", "Solid type and composition", "Elevation data", "Seismic sensors", "Triggers/Thresholds", "Alerts/Warning Level"],
+      points: ["EQ magnitude", "Depth of focus", "Epicenter", "EQ intensity map", "EQ historical database", "Soil type and composition", "Elevation data", "Seismic sensors", "Triggers/Thresholds", "Alerts/Warning Level"],
       image: "./Banner/Earthquake.jpg",
     },
     "City Fire": {
       info: "City Fires",
       points: ["Industrial Data", "Temperature Index", "Precipitation Index", "Wind Speed", "Wind Direction", "Triggers/Thresholds", "Alerts/Warning Level"],
-      image: "./Banner/cityfire.jpg",
+      image: "./Banner/cityfire.png",
     },
     "Road Accidents": {
       info: "Road Accidents",
@@ -56,7 +56,7 @@ const Navbar = ({ setActiveView }) => {
 
   const handleButtonClick = (button) => {
     setActiveView(button);
-    setActiveButton(button); // Set the clicked button as active
+    setActiveButton(button);
   };
 
   return (
@@ -93,6 +93,7 @@ const Navbar = ({ setActiveView }) => {
         ref={dropdownRef}
       >
         {hoveredButton && (
+          <div>
           <div className="hover-content">
             <div className="hover-text">{dropdownData[hoveredButton].info}</div>
             <div className="hover-points">
@@ -105,7 +106,13 @@ const Navbar = ({ setActiveView }) => {
             <div className="hover-image">
               <img src={dropdownData[hoveredButton].image} alt={hoveredButton} />
             </div>
+            
           </div>
+          <button className="know-more-button">
+              Know More <FaArrowRight className="arrow-icon" />
+            </button>
+          </div>
+          
         )}
       </div>
     </>

@@ -86,7 +86,7 @@
 .point {
     margin: 5px 0;
     color: white;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .hover-image {
@@ -118,4 +118,28 @@
     .menu-icon {
         display: block;
     }
+}
+
+.know-more-button {
+    background-color: red; /* Button background color */
+    color: white; /* Button text color */
+    border: none;
+    padding: 8px 16px; /* Smaller padding for compact size */
+    cursor: pointer;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    font-size: 14px; /* Smaller font size */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 20px; /* Rounded border for cute shape */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for pop */
+}
+
+.know-more-button:hover {
+    background-color: darkred;
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.arrow-icon {
+    font-size: 14px; /* Smaller arrow icon */
 }
