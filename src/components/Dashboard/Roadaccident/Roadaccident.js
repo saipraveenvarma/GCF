@@ -17,7 +17,7 @@ const Roadaccidents = () => {
   return (
     <>
       <img 
-        src="./Banner/Roadaccidents.webp" 
+        src="./Banner/Roadaccident.webp" 
         className="picture" 
         alt="A relevant description" 
       />      
