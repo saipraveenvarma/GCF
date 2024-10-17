@@ -4,7 +4,6 @@ import { MapContainer, TileLayer} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-// Delete the default icon URL for Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
@@ -13,25 +12,15 @@ L.Icon.Default.mergeOptions({
 });
 
 const Home = () => {
-  const position = [-8.8747, 125.7275]; // Center of the map
+  const position = [-8.8747, 125.7275]; 
 
   return (
     <>
-      <div className="video-container">
       <img 
         src="./view.webp" 
         className="picture" 
         alt="A relevant description" 
-      />        {/* <video 
-          src='./Banner/opening-video.mp4' 
-          autoPlay 
-          loop 
-          muted 
-          style={{ width: '100%', height: 'auto' }} 
-        >
-          Your browser does not support the video tag.
-        </video> */}
-      </div>
+      />      
 
       <div className="content-container">
         <img src='./map1.png' alt="Map of Timor Leste" className="map-image" />
