@@ -21,10 +21,16 @@
     cursor: pointer;
     transition: color 0.3s ease;
     font-family: "Times New Roman", Times, serif;
+    color: black; /* Default color */
 }
 
+.nav-button.active {
+    color: red; /* Active button color */
+}
+
+/* Green color on hover */
 .nav-button:hover {
-    color: black;
+    color: green;
     text-decoration: underline;
 }
 
@@ -65,11 +71,9 @@
     flex: 1;
     padding: 10px;
     font-size: 50px;
-    font-family: "Times New Roman", Times, serif;
     text-decoration: underline;
-    text-decoration-color: white;
-    text-underline-offset: 4px; 
-    text-decoration-thickness: 1px; 
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
 }
 
 .hover-points {
@@ -77,16 +81,12 @@
     padding: 10px;
     text-align: left;
     font-size: 20px;
-    font-family: "Times New Roman", Times, serif;
 }
 
 .point {
     margin: 5px 0;
     color: white;
     font-size: 15px;
-    font-weight: normal;
-    padding: 5px;
-    font-family: "Times New Roman", Times, serif;
 }
 
 .hover-image {
@@ -103,8 +103,6 @@
     display: none;
     cursor: pointer;
     font-size: 30px;
-    margin-top: 10px;
-    font-family: "Times New Roman", Times, serif;
 }
 
 @media (max-width: 768px) {
@@ -120,16 +118,4 @@
     .menu-icon {
         display: block;
     }
-}
-
-.home-button {
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.home-button:hover {
-    color: black;
-    text-decoration: underline;
 }

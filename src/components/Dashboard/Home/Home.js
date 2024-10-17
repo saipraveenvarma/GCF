@@ -1,5 +1,5 @@
 import React from 'react';
-import './Body.css'; 
+import './Home.css'; 
 import { MapContainer, TileLayer} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -12,14 +12,17 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
-const Body = () => {
+const Home = () => {
   const position = [-8.8747, 125.7275]; // Center of the map
 
   return (
     <>
       <div className="video-container">
-        <img src='./view.webp' className='picture'></img>
-        {/* <video 
+      <img 
+        src="./view.webp" 
+        className="picture" 
+        alt="A relevant description" 
+      />        {/* <video 
           src='./Banner/opening-video.mp4' 
           autoPlay 
           loop 
@@ -61,4 +64,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default Home;

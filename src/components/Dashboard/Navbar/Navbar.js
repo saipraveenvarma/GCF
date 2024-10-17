@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaBars } from 'react-icons/fa';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ setActiveView }) => {
   const [hoveredButton, setHoveredButton] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeButton, setActiveButton] = useState('Home'); // Track the active button
   const dropdownRef = useRef(null);
 
   const dropdownData = {
@@ -36,7 +37,7 @@ const Navbar = () => {
     Flood: {
       info: "Floods",
       points: ["Real-time rainfall", "Historical rainfall", "Forest rainfall", "Industrial maps", "Flood hazard maps", "Critical infrastructures", "Elevation maps", "Population density", "Land cover/Land use", "Triggers/Thresholds", "Alerts/Warning Level"],
-      image: "./Banner/flood1.jpg",
+      image: "./Banner/Flood.jpg",
     },
   };
 
@@ -48,24 +49,31 @@ const Navbar = () => {
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const handleButtonClick = (button) => {
+    setActiveView(button);
+    setActiveButton(button); // Set the clicked button as active
   };
 
   return (
     <>
       <nav className="navbar-container">
         <div className={`nav-buttons ${isMenuOpen ? 'open' : ''}`}>
-          <span className="nav-button home-button">Home</span>
+          <span
+            className={`nav-button ${activeButton === 'Home' ? 'active' : ''}`}
+            onClick={() => handleButtonClick('Home')}
+          >
+            Home
+          </span>
           {Object.keys(dropdownData).map((button) => (
             <span
               key={button}
-              className="nav-button"
+              className={`nav-button ${activeButton === button ? 'active' : ''}`}
+              onClick={() => handleButtonClick(button)}
               onMouseEnter={() => setHoveredButton(button)}
             >
               {button}
@@ -79,13 +87,19 @@ const Navbar = () => {
           <p>EMPOWERING COMMUNITIES, SAFEGUARDING FUTURES</p>
         </div>
       </nav>
-      <div className={`hover-box ${hoveredButton ? 'visible' : ''}`} ref={dropdownRef}>
+
+      <div
+        className={`hover-box ${hoveredButton ? 'visible' : ''}`}
+        ref={dropdownRef}
+      >
         {hoveredButton && (
           <div className="hover-content">
             <div className="hover-text">{dropdownData[hoveredButton].info}</div>
             <div className="hover-points">
               {dropdownData[hoveredButton].points.map((point, index) => (
-                <div key={index} className="point">{point}</div>
+                <div key={index} className="point">
+                  {point}
+                </div>
               ))}
             </div>
             <div className="hover-image">
