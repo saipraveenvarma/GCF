@@ -27,7 +27,7 @@ const Navbar = ({ setActiveView }) => {
     "City Fire": {
       info: "City Fires",
       points: ["Industrial Data", "Temperature Index", "Precipitation Index", "Wind Speed", "Wind Direction", "Triggers/Thresholds", "Alerts/Warning Level"],
-      image: "./Banner/cityfire.png",
+      image: "./Banner/Cityfire.png",
     },
     "Road Accidents": {
       info: "Road Accidents",
