@@ -1,13 +1,13 @@
 import React from 'react';
-import { FaUserCircle, FaThLarge } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import './Header.css';
+import { FaHome } from 'react-icons/fa'; 
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import './MenuHeader.css';
 
-const Header = () => {
+const MenuHeader = () => {
   const navigate = useNavigate(); // Initialize navigate function
 
   const handleHomeClick = () => {
-    navigate('/MenuPage'); // Navigate to /menu when clicked
+    navigate('/'); // Navigate to HomePage when clicked
   };
 
   return (
@@ -20,11 +20,10 @@ const Header = () => {
         </div>
       </div>
       <div className="icon-container">
-        <FaThLarge className="header-icon" onClick={handleHomeClick} /> {/* Add onClick */}
-        <FaUserCircle className="header-icon" />
+        <FaHome className="header-icon" onClick={handleHomeClick} /> {/* Add onClick */}
       </div>
     </header>
   );
 };
 
-export default Header;
+export default MenuHeader;

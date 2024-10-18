@@ -1,0 +1,51 @@
+/* Full-size container for MenuBody */
+.menu-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 columns */
+    grid-template-rows: 1fr 1fr; /* 2 rows */
+    height: 80vh; /* Full viewport height */
+    width: 100%; /* Full width */
+    gap: 15px; /* Spacing between boxes */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Styling for each box */
+  .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  /* Hover effect for all boxes */
+  .box:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Icon styling */
+  .icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Label styling */
+  .label {
+    font-size: 1.5rem;
+  }
+  
+  /* Color schemes based on disaster type */
+  .box-cyclone { background-color: #1E90FF; } /* Cyclone (Dodger Blue) */
+  .box-landslide { background-color: #8B4513; } /* Landslide (Saddle Brown) */
+  .box-earthquake { background-color: #B22222; } /* Earthquake (Firebrick Red) */
+  .box-fire { background-color: #FF4500; } /* City Fire (Orange Red) */
+  .box-accidents { background-color: #FFD700; } /* Road Accidents (Gold) */
+  .box-flood { background-color: #4169E1; } /* Flood (Royal Blue) */

@@ -43,7 +43,7 @@ header {
 }
 
 .header-icon {
-  font-size: 30px; /* Match icon size with the login icon */
+  font-size: 25px; /* Match icon size with the login icon */
   color: #333; /* Change icon color as needed */
   cursor: pointer; /* Change cursor to pointer */
   transition: color 0.3s; /* Smooth color transition */
