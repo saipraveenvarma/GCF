@@ -1,4 +1,3 @@
-// CycloneSidebar.js
 import React, { useState, useEffect } from 'react';
 import './CycloneSidebar.css';
 import { 

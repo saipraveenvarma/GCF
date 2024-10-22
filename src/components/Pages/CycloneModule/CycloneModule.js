@@ -9,9 +9,7 @@ import './CycloneModule.css';
 const CycloneModule = () => {
   return (
     <div className="cyclone-module-container">
-      <div className="cyclone-sidebar">
-        <CycloneSidebar />
-      </div>
+      <CycloneSidebar />
       <div className="main-content">
         <Routes>
           <Route path="/WindSpeed" element={<WindSpeedCyclone />} />
