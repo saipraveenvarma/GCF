@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import DashboardPage from './components/Pages/DashboardPage';
 import MenuPage from './components/Pages/MenuPage';
 import CycloneModule from './components/Pages/CycloneModule/CycloneModule';
+import NotFound from './components/NotFound'; // Import the NotFound component
 
 function App() {
   return (
@@ -10,8 +11,10 @@ function App() {
       <Routes>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/MenuPage" element={<MenuPage />} />
-        <Route path="/CycloneModule" element={<CycloneModule />} /> 
-        <Route path="/*" element={<CycloneModule />} />
+        <Route path="/CycloneModule" element={<CycloneModule />} />
+        
+        {/* Catch-all route for invalid paths */}
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </Router>
   );
