@@ -10,8 +10,8 @@ function App() {
       <Routes>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/MenuPage" element={<MenuPage />} />
-        <Route path="/CycloneModule" element={<CycloneModule />} />
-        
+        <Route path="/CycloneModule" element={<CycloneModule />} /> 
+        <Route path="/*" element={<CycloneModule />} />
       </Routes>
     </Router>
   );
