@@ -7,12 +7,12 @@ const MenuBody = () => {
   const navigate = useNavigate(); // Initialize the hook
 
   const menuItems = [
-    { icon: <FaWind />, label: 'Cyclone', className: 'box-cyclone', route: '/WindSpeed' },
-    { icon: <FaMountain />, label: 'Landslide', className: 'box-landslide' },
-    { icon: <FaGlobe />, label: 'Earthquake', className: 'box-earthquake' },
-    { icon: <FaFireAlt />, label: 'City Fire', className: 'box-fire' },
-    { icon: <FaCarCrash />, label: 'Road Accidents', className: 'box-accidents' },
-    { icon: <FaWater />, label: 'Flood', className: 'box-flood' },
+    { icon: <FaWind />, labeltext: 'Cyclone', className: 'box-cyclone', route: '/WindSpeed' },
+    { icon: <FaMountain />, labeltext: 'Landslide', className: 'box-landslide' },
+    { icon: <FaGlobe />, labeltext: 'Earthquake', className: 'box-earthquake' },
+    { icon: <FaFireAlt />, labeltext: 'City Fire', className: 'box-fire' },
+    { icon: <FaCarCrash />, labeltext: 'Road Accidents', className: 'box-accidents' },
+    { icon: <FaWater />, labeltext: 'Flood', className: 'box-flood' },
   ];
 
   const handleNavigation = (route) => {
@@ -30,7 +30,7 @@ const MenuBody = () => {
           onClick={() => handleNavigation(item.route)} // Trigger navigation on click
         >
           <div className="icon">{item.icon}</div>
-          <div className="label">{item.label}</div>
+          <div className="labeltext">{item.labeltext}</div>
         </div>
       ))}
     </div>

@@ -37,10 +37,11 @@
     margin-bottom: 10px;
   }
   
-  /* Label styling */
-  .label {
-    font-size: 1.5rem;
-  }
+
+  .labeltext {
+    font-size: 2rem; 
+    font-family: "Times New Roman", Times, serif;
+}
   
   /* Color schemes based on disaster type */
   .box-cyclone { background-color: #1E90FF; } /* Cyclone (Dodger Blue) */
