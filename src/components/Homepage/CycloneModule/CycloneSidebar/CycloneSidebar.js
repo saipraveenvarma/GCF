@@ -1,30 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './CycloneSidebar.css';
 import { 
   FaWind, FaCompass, FaTachometerAlt, FaTemperatureHigh, 
-  FaHistory, FaMapMarkedAlt, FaWater, FaExclamationTriangle, FaBell, FaBars, 
-  FaThLarge, FaHome 
+  FaHistory, FaMapMarkedAlt, FaWater, FaExclamationTriangle, 
+  FaBell, FaBars, FaThLarge, FaHome 
 } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const CycloneSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const navigate = useNavigate();
+  const [activeIndex, setActiveIndex] = useState(null); // No default button selected
 
-  const menuItems = [
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const menuItems = useMemo(() => [
     { icon: <FaWind />, label: 'Wind Speed', path: '/WindSpeed' },
     { icon: <FaCompass />, label: 'Wind Direction', path: '/WindDirection' },
-    { icon: <FaTachometerAlt />, label: 'Atmospheric Pressure' },
-    { icon: <FaTemperatureHigh />, label: 'Sea Surface Temp' },
-    { icon: <FaHistory />, label: 'Historical Data' },
-    { icon: <FaMapMarkedAlt />, label: 'Cyclone Path' },
-    { icon: <FaWater />, label: 'Storm Surge' },
-    { icon: <FaExclamationTriangle />, label: 'Triggers/Thresholds' },
-    { icon: <FaBell />, label: 'Alerts/Warning Levels' },
-  ];
+    { icon: <FaTachometerAlt />, label: 'Atmospheric Pressure', path: '/AtmosphericPressure' },
+    { icon: <FaTemperatureHigh />, label: 'Sea Surface Temp', path: '/SeaSurfaceTemp' },
+    { icon: <FaHistory />, label: 'Historical Data', path: '/HistoricalData' },
+    { icon: <FaMapMarkedAlt />, label: 'Cyclone Path', path: '/CyclonePath' },
+    { icon: <FaWater />, label: 'Storm Surge', path: '/StormSurge' },
+    { icon: <FaExclamationTriangle />, label: 'Triggers/Thresholds', path: '/TriggersThresholds' },
+    { icon: <FaBell />, label: 'Alerts/Warning Levels', path: '/AlertsWarningLevels' },
+  ], []);
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const activeItemIndex = menuItems.findIndex(item => item.path === currentPath);
+    setActiveIndex(activeItemIndex !== -1 ? activeItemIndex : null);
+  }, [location.pathname, menuItems]);
 
   const handleButtonClick = (index, path) => {
     setActiveIndex(index);
