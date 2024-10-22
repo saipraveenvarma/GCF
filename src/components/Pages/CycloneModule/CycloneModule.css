@@ -23,7 +23,3 @@
     transition: margin-left 0.3s; /* Smooth transition for margin changes */
 }
 
-/* When sidebar is collapsed */
-.sidebar-container.collapsed ~ .main-content {
-    margin-left: 80px; /* Adjust this based on the collapsed sidebar width */
-}
