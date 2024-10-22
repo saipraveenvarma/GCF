@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../Dashboard/Header/Header';
 import Navbar from '../Dashboard/Navbar/Navbar';
 import Home from '../Dashboard/Home/Home';
@@ -11,7 +11,13 @@ import Flood from '../Dashboard/Flood/Flood';
 import Footer from '../Dashboard/Footer/Footer';
 
 function Dashboard() {
-  const [activeView, setActiveView] = useState('Home'); 
+  const [activeView, setActiveView] = useState(
+    localStorage.getItem('activeView') || 'Home'
+  );
+
+  useEffect(() => {
+    localStorage.setItem('activeView', activeView);
+  }, [activeView]);
 
   const renderView = () => {
     switch (activeView) {

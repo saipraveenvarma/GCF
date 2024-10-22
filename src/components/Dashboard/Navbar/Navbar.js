@@ -6,9 +6,11 @@ import { useNavigate } from 'react-router-dom'; // Import the navigate hook
 const Navbar = ({ setActiveView }) => {
   const [hoveredButton, setHoveredButton] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeButton, setActiveButton] = useState('Home'); 
+  const [activeButton, setActiveButton] = useState(
+    localStorage.getItem('activeView') || 'Home' // Set active button from localStorage
+  ); 
   const dropdownRef = useRef(null);
-  const navigate = useNavigate(); // Initialize navigate hook
+  const navigate = useNavigate();
 
   const dropdownData = {
     Cyclone: {
@@ -65,12 +67,13 @@ const Navbar = ({ setActiveView }) => {
   const handleButtonClick = (button) => {
     setActiveView(button);
     setActiveButton(button);
+    localStorage.setItem('activeView', button); // Store in localStorage
   };
 
   const handleKnowMoreClick = () => {
     if (hoveredButton) {
       const route = dropdownData[hoveredButton].route;
-      navigate(route); // Navigate to the specific route
+      navigate(route);
     }
   };
 
@@ -103,10 +106,7 @@ const Navbar = ({ setActiveView }) => {
         </div>
       </nav>
 
-      <div
-        className={`hover-box ${hoveredButton ? 'visible' : ''}`}
-        ref={dropdownRef}
-      >
+      <div className={`hover-box ${hoveredButton ? 'visible' : ''}`} ref={dropdownRef}>
         {hoveredButton && (
           <div>
             <div className="hover-content">
