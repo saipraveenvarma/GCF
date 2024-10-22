@@ -16,15 +16,15 @@ const CycloneSidebar = () => {
   const location = useLocation();
 
   const menuItems = useMemo(() => [
-    { icon: <FaWind />, label: 'Wind Speed', path: '/WindSpeed' },
-    { icon: <FaCompass />, label: 'Wind Direction', path: '/WindDirection' },
-    { icon: <FaTachometerAlt />, label: 'Atmospheric Pressure', path: '/AtmosphericPressure' },
-    { icon: <FaTemperatureHigh />, label: 'Sea Surface Temp', path: '/SeaSurfaceTemp' },
-    { icon: <FaHistory />, label: 'Historical Data', path: '/HistoricalData' },
-    { icon: <FaMapMarkedAlt />, label: 'Cyclone Path', path: '/CyclonePath' },
-    { icon: <FaWater />, label: 'Storm Surge', path: '/StormSurge' },
-    { icon: <FaExclamationTriangle />, label: 'Triggers/Thresholds', path: '/TriggersThresholds' },
-    { icon: <FaBell />, label: 'Alerts/Warning Levels', path: '/AlertsWarningLevels' },
+    { icon: <FaWind />, label: 'Wind Speed', path: '/CycloneModule/WindSpeed' },
+    { icon: <FaCompass />, label: 'Wind Direction', path: '/CycloneModule/WindDirection' },
+    { icon: <FaTachometerAlt />, label: 'Atmospheric Pressure', path: '/CycloneModule/AtmosphericPressure' },
+    { icon: <FaTemperatureHigh />, label: 'Sea Surface Temp', path: '/CycloneModule/SeaSurfaceTemp' },
+    { icon: <FaHistory />, label: 'Historical Data', path: '/CycloneModule/HistoricalData' },
+    { icon: <FaMapMarkedAlt />, label: 'Cyclone Path', path: '/CycloneModule/CyclonePath' },
+    { icon: <FaWater />, label: 'Storm Surge', path: '/CycloneModule/StormSurge' },
+    { icon: <FaExclamationTriangle />, label: 'Triggers/Thresholds', path: '/CycloneModule/TriggersThresholds' },
+    { icon: <FaBell />, label: 'Alerts/Warning Levels', path: '/CycloneModule/AlertsWarningLevels' },
   ], []);
 
   useEffect(() => {
