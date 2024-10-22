@@ -108,6 +108,8 @@
 
 .label {
     font-size: 1rem; /* Font size for labels */
+    font-family: "Times New Roman", Times, serif;
+
 }
 
 .icon-container {
