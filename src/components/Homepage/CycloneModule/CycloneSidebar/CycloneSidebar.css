@@ -1,0 +1,135 @@
+/* Sidebar container */
+.sidebar-container {
+    width: 200px;
+    height: 95vh;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border-radius: 15px 0 0 15px;
+    transition: width 0.3s;
+}
+
+/* Collapsed state */
+.sidebar-container.collapsed {
+    width: 80px;
+}
+
+/* Wrapper for the menu button to separate it from other buttons */
+.menu-button-wrapper {
+    margin-bottom: 20px; /* Space between menu button and other buttons */
+    width: 100%; /* Ensure it takes full width */
+    display: flex;
+    justify-content: center;
+}
+
+/* menu menu button styling */
+.menu-button {
+    color: black;
+    font-size: 15px;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.menu-button:hover {
+    transform: scale(1.1); /* Slightly grow on hover */
+}
+
+/* List style reset */
+.sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* Sidebar button styles */
+.sidebar-button {
+    width: 100%;
+    background-color: white;
+    color: #1e1e2f;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+/* Icon inside button */
+.sidebar-button .icon {
+    font-size: 25px;
+    color: #1e90ff;
+}
+
+/* Label next to icon */
+.sidebar-button .label {
+    flex-grow: 1;
+    text-align: left;
+}
+
+/* Hide label in collapsed state */
+.sidebar-button .label.hidden {
+    display: none;
+}
+
+/* Active button styles */
+.sidebar-button.active {
+    background-color: #1e90ff;
+    color: white;
+    box-shadow: 2px 2px 10px rgba(30, 144, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.sidebar-button.active .icon {
+    color: white;
+}
+
+/* Hover effect */
+.sidebar-button:hover {
+    background-color: #87cefa;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.sidebar-button:hover .icon {
+    color: white;
+}
+.label{
+    font-size: 1rem;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.icon{
+margin-bottom: 0px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar-button {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .sidebar-container {
+        width: 80px;
+    }
+
+    .sidebar-container.collapsed {
+        width: 60px;
+    }
+}

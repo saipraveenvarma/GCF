@@ -1,0 +1,23 @@
+.cyclone-module-container {
+    display: flex;
+    height: 100vh; /* Make the container take up the full height of the viewport */
+  }
+  
+  /* Sidebar Styling */
+  .cyclone-module-container > .cyclone-sidebar {
+    width: 250px; /* Adjust width as needed */
+    background-color: #f8f9fa; /* Optional: Set a background color */
+    position: fixed; /* Fix the sidebar */
+    height: 100%; /* Full height */
+    overflow-y: auto; /* Scrollable if sidebar content overflows */
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+  }
+  
+  /* Main Content Styling */
+  .cyclone-module-container > .main-content {
+    margin-left: 250px; /* Offset to account for the sidebar width */
+    flex-grow: 1;
+    overflow-y: auto; /* Only the main content should scroll */
+    padding: 20px;
+  }
