@@ -46,7 +46,7 @@ const WindSpeedCyclone = () => {
   return (
     <div className="wind-speed-cyclone-container">
       {/* Leaflet Map Section */}
-      <div className="map-container">
+      <div className="map-container-WindSpeedCyclone">
         <MapContainer
           center={[INITIAL_VIEW_STATE.latitude, INITIAL_VIEW_STATE.longitude]}
           zoom={INITIAL_VIEW_STATE.zoom}

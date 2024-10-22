@@ -44,7 +44,7 @@ const WindDirection = () => {
 
   return (
     <div className="wind-direction-container">
-      <div className="map-container">
+      <div className="map-container-WindDirection">
         <MapContainer
           center={[INITIAL_VIEW_STATE.latitude, INITIAL_VIEW_STATE.longitude]}
           zoom={INITIAL_VIEW_STATE.zoom}
