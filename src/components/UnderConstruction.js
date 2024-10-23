@@ -1,7 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const UnderConstruction = () => {
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
+  const handleMouseEnter = (event) => {
+    event.target.style.backgroundColor = '#f77f00';
+    event.target.style.transform = 'scale(1.1)';
+  };
+
+  const handleMouseLeave = (event) => {
+    event.target.style.backgroundColor = '#e63946';
+    event.target.style.transform = 'scale(1)';
+  };
+
   return (
     <div style={styles.container}>
       <div style={styles.content}>
@@ -10,14 +26,14 @@ const UnderConstruction = () => {
         <p style={styles.errorDescription}>
           We are working hard to bring you this page. Please check back later.
         </p>
-        <Link 
-          to="/" 
-          style={styles.homeButton} 
-          onMouseEnter={handleMouseEnter} 
+        <button
+          onClick={handleGoBack}
+          style={styles.homeButton}
+          onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          Go Back to Home
-        </Link>
+          Go Back
+        </button>
       </div>
     </div>
   );
@@ -62,18 +78,9 @@ const styles = {
     padding: '10px 20px',
     borderRadius: '25px',
     transition: 'background-color 0.3s, transform 0.2s',
+    border: 'none',
+    cursor: 'pointer',
   },
-};
-
-// Hover effect functions
-const handleMouseEnter = (event) => {
-  event.target.style.backgroundColor = '#f77f00';
-  event.target.style.transform = 'scale(1.1)';
-};
-
-const handleMouseLeave = (event) => {
-  event.target.style.backgroundColor = '#e63946';
-  event.target.style.transform = 'scale(1)';
 };
 
 export default UnderConstruction;

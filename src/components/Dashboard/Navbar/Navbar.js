@@ -15,7 +15,7 @@ const Navbar = ({ setActiveView }) => {
   const dropdownData = {
     Cyclone: {
       info: "Cyclones",
-      points: ["Wind Speed", "Wind Direction", "Atmospheric Pressure", "Sea Surface Temp", "Historical Data", "Cyclone Path", "Storm Surge", "Triggers/Thresholds", "Alerts/Warning Levels"],
+      points: ["Cyclone distrurbance track", "Impact forecast", "Ocean state information", "Comparison", "Historical Cyclone", "Report", "Awareness", "Data panel"],
       image: "./Banner/Cyclone.png",
       route: "/CycloneModule/WindSpeed",
     },
