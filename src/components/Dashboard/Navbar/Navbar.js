@@ -17,7 +17,7 @@ const Navbar = ({ setActiveView }) => {
       info: "Cyclones",
       points: ["Cyclone distrurbance track", "Impact forecast", "Ocean state information", "Comparison", "Historical Cyclone", "Report", "Awareness", "Data panel"],
       image: "./Banner/Cyclone.png",
-      route: "/CycloneModule/WindSpeed",
+      route: "/CycloneModule/CycloneDisturbanceTrack",
     },
     Landslide: {
       info: "Landslides",

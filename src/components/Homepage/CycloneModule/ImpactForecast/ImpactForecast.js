@@ -4,7 +4,7 @@ import { Doughnut, Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 import 'leaflet/dist/leaflet.css'; // Import Leaflet CSS
 import L from 'leaflet'; // Import Leaflet for custom marker
-import './WindDirection.css';
+import './ImpactForecast.css';
 
 // Initial view state
 const INITIAL_VIEW_STATE = {
@@ -13,7 +13,7 @@ const INITIAL_VIEW_STATE = {
   zoom: 10,
 };
 
-const WindDirection = () => {
+const ImpactForecast = () => {
   const donutData = {
     labels: ['North', 'South', 'East', 'West'],
     datasets: [
@@ -97,4 +97,4 @@ const WindDirection = () => {
   );
 };
 
-export default WindDirection;
+export default ImpactForecast;

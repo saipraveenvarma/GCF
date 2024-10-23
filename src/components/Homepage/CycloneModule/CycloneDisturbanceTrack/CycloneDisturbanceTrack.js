@@ -4,7 +4,7 @@ import { Doughnut, Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 import 'leaflet/dist/leaflet.css'; // Import Leaflet CSS
 import L from 'leaflet'; // Import Leaflet for custom marker
-import './WindSpeedCyclone.css';
+import './CycloneDisturbanceTrack.css';
 
 // Initial view state
 const INITIAL_VIEW_STATE = {
@@ -13,7 +13,7 @@ const INITIAL_VIEW_STATE = {
   zoom: 8,
 };
 
-const WindSpeedCyclone = () => {
+const CycloneDisturbanceTrack = () => {
   const donutData = {
     labels: ['Asia', 'Europe', 'Americas'],
     datasets: [
@@ -100,4 +100,4 @@ const WindSpeedCyclone = () => {
   );
 };
 
-export default WindSpeedCyclone;
+export default CycloneDisturbanceTrack;

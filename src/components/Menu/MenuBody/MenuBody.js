@@ -7,7 +7,7 @@ const MenuBody = () => {
   const navigate = useNavigate(); // Initialize the hook
 
   const menuItems = [
-    { icon: <FaWind />, labeltext: 'Cyclone', className: 'box-cyclone', route: '/CycloneModule/WindSpeed' },
+    { icon: <FaWind />, labeltext: 'Cyclone', className: 'box-cyclone', route: '/CycloneModule/CycloneDisturbanceTrack' },
     { icon: <FaMountain />, labeltext: 'Landslide', className: 'box-landslide' },
     { icon: <FaGlobe />, labeltext: 'Earthquake', className: 'box-earthquake' },
     { icon: <FaFireAlt />, labeltext: 'City Fire', className: 'box-fire' },

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import CycloneSidebar from '../../Homepage/CycloneModule/CycloneSidebar/CycloneSidebar';
-import WindSpeedCyclone from '../../Homepage/CycloneModule/WindSpeedCyclone/WindSpeedCyclone';
-import WindDirection from '../../Homepage/CycloneModule/WindDirection/WindDirection';
+import CycloneDisturbanceTrack from '../../Homepage/CycloneModule/CycloneDisturbanceTrack/CycloneDisturbanceTrack';
+import ImpactForecast from '../../Homepage/CycloneModule/ImpactForecast/ImpactForecast';
 import UnderConstruction from '../../UnderConstruction'; // Import only once
 import './CycloneModule.css';
 
@@ -12,8 +12,8 @@ const CycloneModule = () => {
       <CycloneSidebar />
       <div className="main-content">
         <Routes>
-          <Route path="WindSpeed" element={<WindSpeedCyclone />} />
-          <Route path="WindDirection" element={<WindDirection />} />
+          <Route path="CycloneDisturbanceTrack" element={<CycloneDisturbanceTrack />} />
+          <Route path="ImpactForecast" element={<ImpactForecast />} />
           <Route path="*" element={<UnderConstruction />} /> {/* This will show UnderConstruction for any unmatched routes */}
         </Routes>
       </div>
