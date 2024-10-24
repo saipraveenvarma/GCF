@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './CycloneSidebar.css';
 import { 
-  FaWind, FaCompass, FaTachometerAlt, FaTemperatureHigh, 
-  FaHistory, FaMapMarkedAlt, FaWater, FaExclamationTriangle, 
-  FaBell, FaBars, FaThLarge, FaHome 
+  FaBars, FaThLarge, FaHome 
 } from 'react-icons/fa';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -16,14 +14,14 @@ const CycloneSidebar = () => {
   const location = useLocation();
 
   const menuItems = useMemo(() => [
-    { icon: <FaWind />, label: 'Cyclone distrurbance track', path: '/CycloneModule/CycloneDisturbanceTrack' },
-    { icon: <FaCompass />, label: 'Impact forecast', path: '/CycloneModule/ImpactForecast' },
-    { icon: <FaTachometerAlt />, label: 'Ocean state information', path: '/CycloneModule/OceanStateInformation' },
-    { icon: <FaTemperatureHigh />, label: 'Comparison', path: '/CycloneModule/Comparison' },
-    { icon: <FaHistory />, label: 'Historical Cyclone', path: '/CycloneModule/HistoricalCyclone' },
-    { icon: <FaMapMarkedAlt />, label: 'Report', path: '/CycloneModule/Report' },
-    { icon: <FaWater />, label: 'Awareness', path: '/CycloneModule/Awareness' },
-    { icon: <FaExclamationTriangle />, label: 'Data panel', path: '/CycloneModule/Data panel' },
+    { icon: '🌪️', label: 'Cyclone Disturbance Track', path: '/CycloneModule/CycloneDisturbanceTrack' },
+    { icon: '📍', label: 'Impact Forecast', path: '/CycloneModule/ImpactForecast' },
+    { icon: '🌊', label: 'Ocean State Information', path: '/CycloneModule/OceanStateInformation' },
+    { icon: '⚖️', label: 'Comparison', path: '/CycloneModule/Comparison' },
+    { icon: '📅', label: 'Historical Cyclone', path: '/CycloneModule/HistoricalCyclone' },
+    { icon: '🗺️', label: 'Report', path: '/CycloneModule/Report' },
+    { icon: '📢', label: 'Awareness', path: '/CycloneModule/Awareness' },
+    { icon: '⚠️', label: 'Data Panel', path: '/CycloneModule/DataPanel' },
   ], []);
 
   useEffect(() => {

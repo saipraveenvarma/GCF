@@ -67,7 +67,7 @@ const Navbar = ({ setActiveView }) => {
   const handleButtonClick = (button) => {
     setActiveView(button);
     setActiveButton(button);
-    localStorage.setItem('activeView', button); // Store in localStorage
+    localStorage.setItem('activeView', button); 
   };
 
   const handleKnowMoreClick = () => {

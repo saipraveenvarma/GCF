@@ -4,10 +4,14 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Header.css';
 
 const Header = () => {
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate();
 
   const handleHomeClick = () => {
-    navigate('/MenuPage'); // Navigate to /menu when clicked
+    navigate('/MenuPage'); 
+  };
+
+  const handleLoginClick = () => {
+    navigate('/LoginPage'); 
   };
 
   return (
@@ -21,7 +25,7 @@ const Header = () => {
       </div>
       <div className="icon-container">
         <FaThLarge className="header-icon" onClick={handleHomeClick} /> {/* Add onClick */}
-        <FaUserCircle className="header-icon" />
+        <FaUserCircle className="header-icon" onClick={handleLoginClick} />
       </div>
     </header>
   );
