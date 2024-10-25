@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './CycloneSidebar.css';
-import { 
-  FaBars, FaThLarge, FaHome 
-} from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaThLarge, FaHome, FaUserCircle } from 'react-icons/fa';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const CycloneSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [activeIndex, setActiveIndex] = useState(null); // No default button selected
+  const [activeIndex, setActiveIndex] = useState(null);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,7 +16,7 @@ const CycloneSidebar = () => {
     { icon: '📍', label: 'Impact Forecast', path: '/CycloneModule/ImpactForecast' },
     { icon: '🌊', label: 'Ocean State Information', path: '/CycloneModule/OceanStateInformation' },
     { icon: '⚖️', label: 'Comparison', path: '/CycloneModule/Comparison' },
-    { icon: '📅', label: 'Historical Cyclone', path: '/CycloneModule/HistoricalCyclone' },
+    { icon: '🗓️', label: 'Historical Cyclone', path: '/CycloneModule/HistoricalCyclone' },
     { icon: '🗺️', label: 'Report', path: '/CycloneModule/Report' },
     { icon: '📢', label: 'Awareness', path: '/CycloneModule/Awareness' },
     { icon: '⚠️', label: 'Data Panel', path: '/CycloneModule/DataPanel' },
@@ -49,14 +47,19 @@ const CycloneSidebar = () => {
 
   const handleHomeClick = () => navigate("/");
   const handleMenuClick = () => navigate("/MenuPage");
+  const handleLoginPageClick = () => navigate("/LoginPage");
 
   return (
     <div className={`sidebar-container ${isCollapsed ? 'collapsed' : ''}`}>
+      <div className="arrow-icon-wrapper">
+        <div className="arrow-icon" onClick={toggleSidebar}>
+          {isCollapsed ? <FaChevronRight /> : <FaChevronLeft />}
+        </div>
+      </div>
+
       <div className="menu-button-wrapper">
-        <button className="toggle-button menu-button" onClick={toggleSidebar}>
-          <FaBars />
-        </button>
         <div className="icon-container">
+          <FaUserCircle className="header-icon" onClick={handleLoginPageClick} />
           <FaThLarge className="header-icon" onClick={handleMenuClick} />
           <FaHome className="header-icon" onClick={handleHomeClick} />
         </div>

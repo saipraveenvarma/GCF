@@ -24,6 +24,10 @@ const LoginPage = () => {
     setShowPassword((prev) => !prev);
   };
 
+  const handleGuestLogin = () => {
+    navigate("/MenuPage"); // Direct guest login to MenuPage
+  };
+
   return (
     <div style={styles.container}>
       <div style={styles.imageSection}>
@@ -90,6 +94,12 @@ const LoginPage = () => {
             <button type="submit" style={styles.button}>
               Login
             </button>
+            <div style={styles.guestLogin}>
+          No account?{" "}
+          <span onClick={handleGuestLogin} style={styles.guestLink}>
+            Login as Guest
+          </span>
+        </div>
           </form>
         </div>
       </div>
@@ -102,7 +112,7 @@ const styles = {
       height: "100vh",
       display: "flex",
       overflow: "hidden",
-      flexDirection: "row", // Default horizontal layout
+      flexDirection: "row",
     },
     imageSection: {
       flex: "0 0 70%",
@@ -225,6 +235,14 @@ const styles = {
       border: "none",
       transition: "background-color .3s ease",
     },
+     guestLogin: {
+    marginTop: "15px",
+  },
+  guestLink: {
+    color: "blue",
+    cursor: "pointer",
+    textDecoration: "underline",
+  },
   
     // Media Queries for Responsive Design
     "@media (max-width: 1024px)": {
