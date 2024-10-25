@@ -1,7 +1,6 @@
-// src/pages/LoginPage.js
 import React, { useState } from "react";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -9,12 +8,13 @@ const LoginPage = () => {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     if (email === "admin@gmail.com" && password === "admin") {
-      navigate("/MenuPage"); // Redirect to the Menu Page
+      localStorage.setItem("isLoggedIn", "true"); // Save login status
+      navigate("/MenuPage"); // Navigate to the Menu Page
     } else {
       setError("Invalid email or password!");
     }
@@ -25,7 +25,8 @@ const LoginPage = () => {
   };
 
   const handleGuestLogin = () => {
-    navigate("/MenuPage"); // Direct guest login to MenuPage
+    localStorage.setItem("isLoggedIn", "true"); // Set guest login status
+    navigate("/MenuPage"); // Navigate to MenuPage
   };
 
   return (
@@ -47,14 +48,14 @@ const LoginPage = () => {
         </div>
 
         <div style={styles.infoText}>
-  <p style={styles.infoTitle}>Democratic Republic of Timor-Leste</p>
-  <p style={styles.infoDetails}>
-    Palácio do Governo Avenida Presidente <br /> Nicolau Lobato Dili,
-    Timor-Leste <br />
-    Phone: (+670) 331 1243 / 331 0479 <br />
-    Email: gabmecae.rdtl@gmail.com
-  </p>
-</div>
+          <p style={styles.infoTitle}>Democratic Republic of Timor-Leste</p>
+          <p style={styles.infoDetails}>
+            Palácio do Governo Avenida Presidente <br />
+            Nicolau Lobato Dili, Timor-Leste <br />
+            Phone: (+670) 331 1243 / 331 0479 <br />
+            Email: gabmecae.rdtl@gmail.com
+          </p>
+        </div>
 
         <div style={styles.card}>
           <h2 style={styles.title}>Login</h2>
@@ -82,11 +83,7 @@ const LoginPage = () => {
                 required
               />
               <div onClick={togglePasswordVisibility} style={styles.eyeIcon}>
-                {showPassword ? (
-                  <FaEyeSlash style={styles.eyeIconStyle} />
-                ) : (
-                  <FaEye style={styles.eyeIconStyle} />
-                )}
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
               </div>
             </div>
 
@@ -95,11 +92,11 @@ const LoginPage = () => {
               Login
             </button>
             <div style={styles.guestLogin}>
-          No account?{" "}
-          <span onClick={handleGuestLogin} style={styles.guestLink}>
-            Login as Guest
-          </span>
-        </div>
+              No account?{" "}
+              <span onClick={handleGuestLogin} style={styles.guestLink}>
+                Login as Guest
+              </span>
+            </div>
           </form>
         </div>
       </div>
@@ -242,6 +239,18 @@ const styles = {
     color: "blue",
     cursor: "pointer",
     textDecoration: "underline",
+  },
+
+  logoutBox: {
+    position: "absolute",
+    top: "60px",
+    right: "10px",
+    backgroundColor: "white",
+    border: "1px solid #ddd",
+    padding: "10px",
+    borderRadius: "4px",
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+    zIndex: 1000,
   },
   
     // Media Queries for Responsive Design
