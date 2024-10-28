@@ -91,12 +91,12 @@ const LoginPage = () => {
             <button type="submit" style={styles.button}>
               Login
             </button>
-            <div style={styles.guestLogin}>
+            {/* <div style={styles.guestLogin}>
               No account?{" "}
               <span onClick={handleGuestLogin} style={styles.guestLink}>
                 Login as Guest
               </span>
-            </div>
+            </div> */}
           </form>
         </div>
       </div>
