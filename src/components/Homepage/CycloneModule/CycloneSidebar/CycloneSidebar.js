@@ -7,7 +7,9 @@ const CycloneSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [showLogoutBox, setShowLogoutBox] = useState(false); // Logout box state
 
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,15 +25,9 @@ const CycloneSidebar = () => {
   ], []);
 
   useEffect(() => {
-    const currentPath = location.pathname;
-    const activeItemIndex = menuItems.findIndex(item => item.path === currentPath);
+    const activeItemIndex = menuItems.findIndex(item => item.path === location.pathname);
     setActiveIndex(activeItemIndex !== -1 ? activeItemIndex : null);
   }, [location.pathname, menuItems]);
-
-  const handleButtonClick = (index, path) => {
-    setActiveIndex(index);
-    if (path) navigate(path);
-  };
 
   const toggleSidebar = () => setIsCollapsed(!isCollapsed);
 
@@ -45,23 +41,42 @@ const CycloneSidebar = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleHomeClick = () => navigate("/");
-  const handleMenuClick = () => navigate("/MenuPage");
-  const handleLoginPageClick = () => navigate("/LoginPage");
+  const handleButtonClick = (index, path) => {
+    setActiveIndex(index);
+    if (path) navigate(path);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    navigate('/LoginPage');
+  };
+
+  const toggleLogoutBox = () => setShowLogoutBox(!showLogoutBox);
 
   return (
     <div className={`sidebar-container ${isCollapsed ? 'collapsed' : ''}`}>
-      <div className="arrow-icon-wrapper">
-        <div className="arrow-icon" onClick={toggleSidebar}>
-          {isCollapsed ? <FaChevronRight /> : <FaChevronLeft />}
-        </div>
+      <div className="arrow-icon-wrapper" onClick={toggleSidebar}>
+        {isCollapsed ? <FaChevronRight /> : <FaChevronLeft />}
       </div>
 
       <div className="menu-button-wrapper">
         <div className="icon-container">
-          <FaUserCircle className="header-icon" onClick={handleLoginPageClick} />
-          <FaThLarge className="header-icon" onClick={handleMenuClick} />
-          <FaHome className="header-icon" onClick={handleHomeClick} />
+          <FaUserCircle className="header-icon" onClick={toggleLogoutBox} />
+          {showLogoutBox && isLoggedIn && (
+            <div className="logout-box">
+              <img
+                src="https://via.placeholder.com/50"
+                alt="User"
+                className="user-image"
+              />
+              <span className="user-name">Admin</span>
+              <button className="logout-button" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          )}
+          <FaThLarge className="header-icon" onClick={() => navigate('/MenuPage')} />
+          <FaHome className="header-icon" onClick={() => navigate('/')} />
         </div>
       </div>
 

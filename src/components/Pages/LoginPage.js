@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { FaHome} from 'react-icons/fa';
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -24,10 +25,7 @@ const LoginPage = () => {
     setShowPassword((prev) => !prev);
   };
 
-  const handleGuestLogin = () => {
-    localStorage.setItem("isLoggedIn", "true"); // Set guest login status
-    navigate("/MenuPage"); // Navigate to MenuPage
-  };
+
 
   return (
     <div style={styles.container}>
@@ -42,7 +40,12 @@ const LoginPage = () => {
       </div>
 
       <div style={styles.loginSection}>
-        <div style={styles.logoContainer}>
+      <div style={styles.logoContainer}>
+      <FaHome
+    className="header-icon"
+    onClick={() => navigate('/')}
+    style={styles.homeIcon}
+  />
           <img src="/timor.png" alt="Timor Logo" style={styles.logo} />
           <img src="/rimes-logo.svg" alt="RIMES Logo" style={styles.logo} />
         </div>
@@ -251,6 +254,14 @@ const styles = {
     borderRadius: "4px",
     boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
     zIndex: 1000,
+  },
+  homeIcon: {
+    position: "absolute",
+    top: "20px",
+    right: "20px",
+    color: "white", // Set icon color to white
+    cursor: "pointer",
+    fontSize: "24px", // Adjust size if needed
   },
   
     // Media Queries for Responsive Design

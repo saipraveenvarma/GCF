@@ -1,42 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { FaUserCircle, FaThLarge } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import './Header.css';
+import React, { useState, useEffect } from "react";
+import { FaUserCircle, FaThLarge } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import "./Header.css";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showLogoutBox, setShowLogoutBox] = useState(false); 
+  const [showLogoutBox, setShowLogoutBox] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
   const navigate = useNavigate();
 
-  // Recheck login status from localStorage whenever the component loads
+  // Check login status and email on component load
   useEffect(() => {
-    const loggedInStatus = localStorage.getItem('isLoggedIn') === 'true';
+    const loggedInStatus = localStorage.getItem("isLoggedIn") === "true";
+    const email = localStorage.getItem("userEmail") || "";
     setIsLoggedIn(loggedInStatus);
+    setUserEmail(email);
   }, []);
 
   const handleHomeClick = () => {
-    if (isLoggedIn) {
-      navigate('/MenuPage'); // Go to Menu if logged in
-    } else {
-      navigate('/LoginPage'); // Go to Login if not logged in
-    }
+    navigate(isLoggedIn ? "/MenuPage" : "/LoginPage");
   };
 
   const handleUserIconClick = () => {
     if (isLoggedIn) {
-      // Toggle logout box if logged in
       setShowLogoutBox((prev) => !prev);
     } else {
-      // Redirect to login page if not logged in
-      navigate('/LoginPage');
+      navigate("/LoginPage");
     }
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn'); // Clear login status
-    setIsLoggedIn(false); // Update state
-    setShowLogoutBox(false); // Close logout box
-    navigate('/LoginPage'); // Redirect to login page
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userEmail");
+    setIsLoggedIn(false);
+    setShowLogoutBox(false);
+    navigate("/LoginPage");
   };
 
   return (
@@ -54,12 +52,23 @@ const Header = () => {
         {isLoggedIn && (
           <FaThLarge className="header-icon" onClick={handleHomeClick} />
         )}
-        <FaUserCircle className="header-icon" onClick={handleUserIconClick} />
-        {showLogoutBox && isLoggedIn && (
-          <div className="logout-box">
-            <button onClick={handleLogout}>Logout</button>
-          </div>
-        )}
+        <div className="user-icon-wrapper">
+          <FaUserCircle className="header-icon" onClick={handleUserIconClick} />
+          {showLogoutBox && isLoggedIn && (
+            <div className="logout-box">
+              <img
+                src="https://via.placeholder.com/50"
+                alt="User"
+                className="user-image"
+              />
+              <span className="user-email">{userEmail}</span>
+              <span className="user-name">Admin</span>
+              <button className="logout-button" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

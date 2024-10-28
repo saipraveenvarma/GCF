@@ -4,34 +4,41 @@ import { useNavigate } from 'react-router-dom';
 
 const useAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLogoutBox, setShowLogoutBox] = useState(false);
   const navigate = useNavigate();
 
+  // Check login status from localStorage on mount
   useEffect(() => {
     const loggedInStatus = localStorage.getItem('isLoggedIn') === 'true';
     setIsLoggedIn(loggedInStatus);
   }, []);
 
-  const handleLogin = () => {
+  // Login handler
+  const login = () => {
     localStorage.setItem('isLoggedIn', 'true');
     setIsLoggedIn(true);
     navigate('/MenuPage');
   };
 
-  const handleLogout = () => {
+  // Logout handler
+  const logout = () => {
     localStorage.removeItem('isLoggedIn');
     setIsLoggedIn(false);
+    setShowLogoutBox(false);
     navigate('/LoginPage');
   };
 
-  const handleUserIconClick = () => {
-    if (isLoggedIn) {
-      handleLogout();
-    } else {
-      navigate('/LoginPage');
-    }
+  const toggleLogoutBox = () => {
+    setShowLogoutBox((prev) => !prev);
   };
 
-  return { isLoggedIn, handleLogin, handleLogout, handleUserIconClick };
+  return {
+    isLoggedIn,
+    showLogoutBox,
+    login,
+    logout,
+    toggleLogoutBox,
+  };
 };
 
 export default useAuth;
