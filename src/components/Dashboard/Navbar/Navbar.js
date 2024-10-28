@@ -15,7 +15,7 @@ const Navbar = ({ setActiveView }) => {
   const dropdownData = {
     Cyclone: {
       info: "Cyclones",
-      points: ["Cyclone distrurbance track", "Impact forecast", "Ocean state information", "Comparison", "Historical Cyclone", "Report", "Awareness", "Data panel"],
+      points: ["Cyclone distrurbance track", "Impact forecast", "Ocean state information", "Historical Cyclone", "Report", "Awareness"],
       image: "./Banner/Cyclone.png",
       route: "/CycloneModule/CycloneDisturbanceTrack",
     },
