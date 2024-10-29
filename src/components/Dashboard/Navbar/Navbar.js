@@ -23,7 +23,7 @@ const Navbar = ({ setActiveView }) => {
       info: "Landslides",
       points: ["Elevation Data", "Vulnerable Locations", "Slope gradient", "Soil type and composition", "Fault lines", "Rainfall data", "Soil moisture", "Groundwater level", "Triggers/Thresholds", "Alerts/Warning Level"],
       image: "./Banner/Landslide.webp",
-      route: "",
+      route: "/LandSlideModule/ElevationData",
     },
     Earthquake: {
       info: "Earthquakes",

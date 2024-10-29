@@ -25,35 +25,35 @@
     width: 100%;
 }
 
-.sidebar-button .icon {
+.sidebar-lansdslide-button .icon {
     font-size: 25px;
 }
 
-.sidebar-button .label {
+.sidebar-lansdslide-button .label {
     flex-grow: 1;
     text-align: left;
 }
 
-.sidebar-button .label.hidden {
+.sidebar-lansdslide-button .label.hidden {
     display: none;
 }
 
-.sidebar-button.active .icon {
+.sidebar-lansdslide-button.active .icon {
     color: white;
 }
 
-.sidebar-button:hover {
-    background-color: #87cefa;
+.sidebar-lansdslide-button:hover {
+    background-color:  #D19A6A ;
     color: white;
     transform: translateY(-2px);
 }
 
-.sidebar-button:hover .icon {
+.sidebar-lansdslide-button:hover .icon {
     color: white;
 }
 
 /* Logout Box */
-.logout-box {
+.logout-landslide-box {
     position: absolute;
     top: 50px;
     right: -5px;
@@ -65,22 +65,22 @@
     text-align: center;
 }
 
-.logout-box .user-image {
+.logout-landslide-box .user-image {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-bottom: 10px;
 }
 
-.logout-box .user-name {
+.logout-landslide-box .user-name {
     font-size: 16px;
     margin-bottom: 10px;
     display: block;
 }
 
-.logout-box .logout-button {
+.logout-landslide-box .logout-button {
     width: 100%;
-    background-color: #1e90ff;
+    background-color: #8B4513;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -89,8 +89,8 @@
     transition: background-color 0.3s ease;
 }
 
-.logout-box .logout-button:hover {
-    background-color: #005bb5;
+.logout-landslide-box .logout-button:hover {
+    background-color: #8B4513;
 }
 
 /* Dropdown Menu */
@@ -121,7 +121,7 @@
 
 /* Media Queries */
 @media (max-width: 768px) {
-    .sidebar-button {
+    .sidebar-lansdslide-button {
         font-size: 12px;
         padding: 8px;
     }
@@ -160,7 +160,7 @@
     cursor: pointer;
 }
 
-.sidebar-button {
+.sidebar-lansdslide-button {
     width: 100%;
     background-color: white;
     color: #1e1e2f;
@@ -174,7 +174,7 @@
     transition: background-color 0.3s;
 }
 
-.sidebar-button.active {
-    background-color: #1e90ff;
+.sidebar-lansdslide-button.active {
+    background-color: #8B4513;
     color: white;
 }
