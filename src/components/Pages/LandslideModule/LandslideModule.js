@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import LandslideSidebar from '../../Homepage/LandslideModule/LandslideSidebar/LandslideSidebar';
-import ElevationData from '../../Homepage/LandslideModule/ElevationData/ElevationData';
+import LandslideSidebar from '../../Homepage/Landslide/LandslideSidebar/LandslideSidebar';
+import ElevationData from '../../Homepage/Landslide/ElevationData/ElevationData';
 import UnderConstruction from '../../UnderConstruction';
 import './LandslideModule.css';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import CycloneSidebar from '../../Homepage/CycloneModule/CycloneSidebar/CycloneSidebar';
-import CycloneDisturbanceTrack from '../../Homepage/CycloneModule/CycloneDisturbanceTrack/CycloneDisturbanceTrack';
-import ImpactForecast from '../../Homepage/CycloneModule/ImpactForecast/ImpactForecast';
+import CycloneSidebar from '../../Homepage/Cyclone/CycloneSidebar/CycloneSidebar';
+import CycloneDisturbanceTrack from '../../Homepage/Cyclone/CycloneDisturbanceTrack/CycloneDisturbanceTrack';
+import ImpactForecast from '../../Homepage/Cyclone/ImpactForecast/ImpactForecast';
 import UnderConstruction from '../../UnderConstruction'; 
 import './CycloneModule.css';
 

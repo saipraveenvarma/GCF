@@ -14,8 +14,8 @@ const LoginPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     if (email === "admin@gmail.com" && password === "admin") {
-      localStorage.setItem("isLoggedIn", "true"); // Save login status
-      navigate("/MenuPage"); // Navigate to the Menu Page
+      localStorage.setItem("isLoggedIn", "true");
+      navigate("/MenuPage"); 
     } else {
       setError("Invalid email or password!");
     }
@@ -94,12 +94,6 @@ const LoginPage = () => {
             <button type="submit" style={styles.button}>
               Login
             </button>
-            {/* <div style={styles.guestLogin}>
-              No account?{" "}
-              <span onClick={handleGuestLogin} style={styles.guestLink}>
-                Login as Guest
-              </span>
-            </div> */}
           </form>
         </div>
       </div>

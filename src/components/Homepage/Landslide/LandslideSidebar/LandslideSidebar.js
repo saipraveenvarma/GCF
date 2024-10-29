@@ -130,7 +130,7 @@ const LandslideSidebar = () => {
                 {item.subsections.map((subItem, subIndex) => (
                   <li key={subIndex} className="sidebar-item dropdown-item">
                     <button
-                      className={`sidebar-button ${
+                      className={`sidebar-landslide-button ${
                         activePath === subItem.path ? 'active' : ''
                       }`}
                       onClick={() => handleSubsectionClick(subItem.path)}
