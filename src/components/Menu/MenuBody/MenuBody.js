@@ -8,7 +8,7 @@ const MenuBody = () => {
 
   const menuItems = [
     { icon: <FaWind />, labeltext: 'Cyclone', className: 'box-cyclone', route: '/CycloneModule/CycloneDisturbanceTrack' },
-    { icon: <FaMountain />, labeltext: 'Landslide', className: 'box-landslide' , route: '/LandSlideModule/ElevationData' },
+    { icon: <FaMountain />, labeltext: 'Landslide', className: 'box-landslide' , route: '/LandslideModule/ElevationData' },
     { icon: <FaGlobe />, labeltext: 'Earthquake', className: 'box-earthquake' },
     { icon: <FaFireAlt />, labeltext: 'City Fire', className: 'box-fire' },
     { icon: <FaCarCrash />, labeltext: 'Road Accidents', className: 'box-accidents' },
