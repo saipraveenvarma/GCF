@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './CycloneSidebar.css';
-import { FaChevronLeft, FaChevronRight, FaThLarge, FaHome, FaUserCircle } from 'react-icons/fa';
+import { 
+  FaChevronLeft, FaChevronRight, FaThLarge, 
+  FaHome, FaUserCircle, FaCaretDown, FaCaretUp 
+} from 'react-icons/fa';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const CycloneSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [activeIndex, setActiveIndex] = useState(null);
-  const [showLogoutBox, setShowLogoutBox] = useState(false); // Logout box state
+  const [activePath, setActivePath] = useState('');
+  const [showLogoutBox, setShowLogoutBox] = useState(false);
+  const [isDataPanelOpen, setIsDataPanelOpen] = useState(false);
 
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   const navigate = useNavigate();
@@ -21,13 +25,26 @@ const CycloneSidebar = () => {
     { icon: '🗓️', label: 'Historical Cyclone', path: '/CycloneModule/HistoricalCyclone' },
     { icon: '🗺️', label: 'Report', path: '/CycloneModule/Report' },
     { icon: '📢', label: 'Awareness', path: '/CycloneModule/Awareness' },
-    { icon: '⚠️', label: 'Data Panel', path: '/CycloneModule/DataPanel' },
+    { 
+      icon: '⚠️', 
+      label: 'Data Panel',
+      path: null,
+      subsections: [
+        { icon: '📝', label: 'Bulletin Entry', path: '/CycloneModule/DataPanel/BulletinEntry' },
+        { icon: '📍', label: 'Cyclone Track', path: '/CycloneModule/DataPanel/CycloneTrack' },
+        { icon: '📜', label: 'Historical Cyclone', path: '/CycloneModule/DataPanel/HistoricalCyclone' },
+        { icon: '📊', label: 'Impact - Historical Cyclone', path: '/CycloneModule/DataPanel/Impact-HistoricalCyclone' },
+        { icon: '📁', label: 'Cyclone Report Upload', path: '/CycloneModule/DataPanel/CycloneReportUpload' },
+        { icon: '⬆️', label: 'Upload JTWC', path: '/CycloneModule/DataPanel/UploadJTWC' },
+        { icon: '🛑', label: 'Cyclone Awareness', path: '/CycloneModule/DataPanel/CycloneAwareness' },
+      ],
+    },
+   
   ], []);
 
   useEffect(() => {
-    const activeItemIndex = menuItems.findIndex(item => item.path === location.pathname);
-    setActiveIndex(activeItemIndex !== -1 ? activeItemIndex : null);
-  }, [location.pathname, menuItems]);
+    setActivePath(location.pathname);
+  }, [location.pathname]);
 
   const toggleSidebar = () => setIsCollapsed(!isCollapsed);
 
@@ -41,9 +58,16 @@ const CycloneSidebar = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleButtonClick = (index, path) => {
-    setActiveIndex(index);
+  const handleButtonClick = (path) => {
+    setActivePath(path);
     if (path) navigate(path);
+  };
+
+  const toggleDataPanel = () => setIsDataPanelOpen(!isDataPanelOpen);
+
+  const handleSubsectionClick = (path) => {
+    setActivePath(path);
+    navigate(path);
   };
 
   const handleLogout = () => {
@@ -84,8 +108,8 @@ const CycloneSidebar = () => {
         {menuItems.map((item, index) => (
           <li key={index} className="sidebar-item">
             <button
-              className={`sidebar-button ${activeIndex === index ? 'active' : ''}`}
-              onClick={() => handleButtonClick(index, item.path)}
+              className={`sidebar-button ${activePath === item.path ? 'active' : ''}`}
+              onClick={() => item.subsections ? toggleDataPanel() : handleButtonClick(item.path)}
             >
               <span className="icon">{item.icon}</span>
               {!isMobile && (
@@ -93,7 +117,32 @@ const CycloneSidebar = () => {
                   {item.label}
                 </span>
               )}
+              {item.subsections && (
+                <span className="dropdown-icon">
+                  {isDataPanelOpen ? <FaCaretUp /> : <FaCaretDown />}
+                </span>
+              )}
             </button>
+
+            {item.subsections && isDataPanelOpen && (
+              <ul className={`dropdown-menu ${isDataPanelOpen ? 'active' : ''}`}>
+                {item.subsections.map((subItem, subIndex) => (
+                  <li key={subIndex} className="sidebar-item dropdown-item">
+                    <button
+                      className={`sidebar-button ${
+                        activePath === subItem.path ? 'active' : ''
+                      }`}
+                      onClick={() => handleSubsectionClick(subItem.path)}
+                    >
+                      <span className="icon">{subItem.icon}</span> {/* Render the icon */}
+                      <span className={`label ${isCollapsed ? 'hidden' : ''}`}>
+                        {subItem.label}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))}
       </ul>
