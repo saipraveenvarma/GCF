@@ -33,5 +33,39 @@
   width: 100%;
   height: 36rem;
 }
+/* Control Box Styles */
+.control-box {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Ensure it appears on top of the map */
+  font-family: Arial, sans-serif;
+}
+
+.control-box button {
+  display: block;
+  width: 100%;
+  margin: 3px 0;
+  padding: 6px 8px;
+  font-size: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.control-box button:hover {
+  background-color: #45a049;
+}
+
+.control-box button:active {
+  background-color: #3e8e41;
+}
 
 

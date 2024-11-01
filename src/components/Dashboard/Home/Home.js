@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css'; 
-import { MapContainer, TileLayer} from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
+// Configuring Leaflet default icon
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
@@ -13,6 +14,37 @@ L.Icon.Default.mergeOptions({
 
 const Home = () => {
   const position = [-8.8747, 125.7275]; 
+  const [boundaryData, setBoundaryData] = useState(null);
+
+  // Function to load GeoJSON data from a specified URL
+  const loadGeoJSON = (url) => {
+    setBoundaryData(null); // Clear any existing boundary data before loading new data
+
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("GeoJSON Data Loaded:", data); // Debugging: Check if data is loaded
+        setBoundaryData(data);
+      })
+      .catch((error) => console.error("Error loading GeoJSON:", error));
+  };
+
+  // Load the "Country" shape file by default when the component mounts
+  useEffect(() => {
+    loadGeoJSON(`${process.env.PUBLIC_URL}/DATA/OSMbased_adm0_boundary.json`);
+  }, []);
+
+  // Optional: Styling for the boundary shape
+  const boundaryStyle = {
+    color: "#FF0000", // Red outline for visibility
+    weight: 2,
+    fillOpacity: 0.1
+  };
 
   return (
     <>
@@ -45,7 +77,23 @@ const Home = () => {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
-            {/* All municipality markers have been removed */}
+            {/* Render GeoJSON shape if boundaryData is loaded */}
+            {boundaryData && (
+              <GeoJSON data={boundaryData} style={boundaryStyle} />
+            )}
+
+            {/* Control Box */}
+            <div className="control-box">
+              <button onClick={() => loadGeoJSON(`${process.env.PUBLIC_URL}/DATA/OSMbased_adm0_boundary.json`)}>
+                Country
+              </button>
+              <button onClick={() => loadGeoJSON(`${process.env.PUBLIC_URL}/DATA/OSMbased_adm1_boundary.json`)}>
+                Municipalitys-14
+              </button>
+              <button onClick={() => loadGeoJSON(`${process.env.PUBLIC_URL}/DATA/OSMbased_adm2_boundary.json`)}>
+                Sub-Miniciplaiys-71
+              </button>
+            </div>
           </MapContainer>
         </div>
       </div>
