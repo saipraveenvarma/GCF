@@ -15,10 +15,12 @@ L.Icon.Default.mergeOptions({
 const Home = () => {
   const position = [-8.8747, 125.7275]; 
   const [boundaryData, setBoundaryData] = useState(null);
+  const [activeBoundary, setActiveBoundary] = useState("country");
 
   // Function to load GeoJSON data from a specified URL
-  const loadGeoJSON = (url) => {
+  const loadGeoJSON = (url, type) => {
     setBoundaryData(null); // Clear any existing boundary data before loading new data
+    setActiveBoundary(type);
 
     fetch(url)
       .then((response) => {
@@ -28,7 +30,6 @@ const Home = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("GeoJSON Data Loaded:", data); // Debugging: Check if data is loaded
         setBoundaryData(data);
       })
       .catch((error) => console.error("Error loading GeoJSON:", error));
@@ -36,19 +37,54 @@ const Home = () => {
 
   // Load the "Country" shape file by default when the component mounts
   useEffect(() => {
-    loadGeoJSON(`${process.env.PUBLIC_URL}/DATA/OSMbased_adm0_boundary.json`);
+    loadGeoJSON(`${process.env.PUBLIC_URL}/DATA/OSMbased_adm0_boundary.json`, "country");
   }, []);
 
-  // Optional: Styling for the boundary shape
+  // Styling for each shape
   const boundaryStyle = {
     color: "#FF0000", // Red outline for visibility
     weight: 2,
     fillOpacity: 0.1
   };
 
+  // Function to display appropriate popup based on boundary type
+  const onEachFeature = (feature, layer) => {
+    let popupContent = "";
+    if (activeBoundary === "country" && feature.properties) {
+      const { ADM0, ADM_code, Municipio, PostoAdmin, Sucos, Aldeias } = feature.properties;
+      popupContent = `
+        <b>Country:</b> ${ADM0 || "N/A"}<br />
+        <b>Code:</b> ${ADM_code || "N/A"}<br />
+        <b>Municipalities:</b> ${Municipio || "N/A"}<br />
+        <b>PostoAdmin:</b> ${PostoAdmin || "N/A"}<br />
+        <b>Sucos:</b> ${Sucos || "N/A"}<br />
+        <b>Aldeias:</b> ${Aldeias || "N/A"}<br />
+      `;
+    } else if (activeBoundary === "municipality" && feature.properties) {
+      const { ADM1, ADM_Code, area_sqkm, Population, Male_Pop, Female_Pop } = feature.properties;
+      popupContent = `
+        <b>Municipality:</b> ${ADM1 || "N/A"}<br />
+        <b>Code:</b> ${ADM_Code || "N/A"}<br />
+        <b>Area (sq km):</b> ${area_sqkm || "N/A"}<br />
+        <b>Population:</b> ${Population || "N/A"}<br />
+        <b>Male Population:</b> ${Male_Pop || "N/A"}<br />
+        <b>Female Population:</b> ${Female_Pop || "N/A"}<br />
+      `;
+    } else if (activeBoundary === "sub-municipality" && feature.properties) {
+      const { ADM2, ADM1, ADM_Code, area_sqkm } = feature.properties;
+      popupContent = `
+        <b>Sub-Municipality:</b> ${ADM2 || "N/A"}<br />
+        <b>Municipality:</b> ${ADM1 || "N/A"}<br />
+        <b>Code:</b> ${ADM_Code || "N/A"}<br />
+        <b>Area (sq km):</b> ${area_sqkm || "N/A"}<br />
+      `;
+    }
+    layer.bindPopup(popupContent);
+  };
+
   return (
     <>
-      <img 
+       <img 
         src="./view.webp" 
         className="picture" 
         alt="A relevant description" 
@@ -79,19 +115,19 @@ const Home = () => {
             />
             {/* Render GeoJSON shape if boundaryData is loaded */}
             {boundaryData && (
-              <GeoJSON data={boundaryData} style={boundaryStyle} />
+              <GeoJSON data={boundaryData} style={boundaryStyle} onEachFeature={onEachFeature} />
             )}
 
             {/* Control Box */}
             <div className="control-box">
-              <button onClick={() => loadGeoJSON(`${process.env.PUBLIC_URL}/DATA/OSMbased_adm0_boundary.json`)}>
+              <button onClick={() => loadGeoJSON(`${process.env.PUBLIC_URL}/DATA/OSMbased_adm0_boundary.json`, "country")}>
                 Country
               </button>
-              <button onClick={() => loadGeoJSON(`${process.env.PUBLIC_URL}/DATA/OSMbased_adm1_boundary.json`)}>
-                Municipalitys-14
+              <button onClick={() => loadGeoJSON(`${process.env.PUBLIC_URL}/DATA/OSMbased_adm1_boundary.json`, "municipality")}>
+                Municipalities-14
               </button>
-              <button onClick={() => loadGeoJSON(`${process.env.PUBLIC_URL}/DATA/OSMbased_adm2_boundary.json`)}>
-                Sub-Miniciplaiys-71
+              <button onClick={() => loadGeoJSON(`${process.env.PUBLIC_URL}/DATA/OSMbased_adm2_boundary.json`, "sub-municipality")}>
+                Sub-Municipalities-71
               </button>
             </div>
           </MapContainer>
