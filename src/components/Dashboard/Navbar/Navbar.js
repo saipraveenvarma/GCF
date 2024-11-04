@@ -25,6 +25,12 @@ const Navbar = ({ setActiveView }) => {
       image: "./Banner/Landslide.webp",
       route: "/LandslideModule/ElevationData",
     },
+    Flood: {
+      info: "Floods",
+      points: ["Real-time rainfall", "Historical rainfall", "Forest rainfall", "Industrial maps", "Flood hazard maps", "Critical infrastructures", "Elevation maps", "Population density", "Land cover/Land use", "Triggers/Thresholds", "Alerts/Warning Level"],
+      image: "./Banner/Flood.jpg",
+      route: "",
+    },
     Earthquake: {
       info: "Earthquakes",
       points: ["EQ magnitude", "Depth of focus", "Epicenter", "EQ intensity map", "EQ historical database", "Soil type and composition", "Elevation data", "Seismic sensors", "Triggers/Thresholds", "Alerts/Warning Level"],
@@ -43,12 +49,7 @@ const Navbar = ({ setActiveView }) => {
       image: "./Banner/Roadaccident.webp",
       route: "",
     },
-    Flood: {
-      info: "Floods",
-      points: ["Real-time rainfall", "Historical rainfall", "Forest rainfall", "Industrial maps", "Flood hazard maps", "Critical infrastructures", "Elevation maps", "Population density", "Land cover/Land use", "Triggers/Thresholds", "Alerts/Warning Level"],
-      image: "./Banner/Flood.jpg",
-      route: "",
-    },
+   
   };
 
   const handleClickOutside = (event) => {

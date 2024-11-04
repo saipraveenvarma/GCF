@@ -88,7 +88,7 @@ const LandslideSidebar = () => {
         <div className="icon-container">
           <FaUserCircle className="header-icon" onClick={toggleLogoutBox} />
           {showLogoutBox && isLoggedIn && (
-            <div className="logout-landslide-box">
+            <div className="logout-box">
               <img
                 src="https://via.placeholder.com/50"
                 alt="User"
@@ -109,7 +109,7 @@ const LandslideSidebar = () => {
         {menuItems.map((item, index) => (
           <li key={index} className="sidebar-item">
             <button
-              className={`sidebar-lansdslide-button ${activePath === item.path ? 'active' : ''}`}
+              className={`sidebar-button ${activePath === item.path ? 'active' : ''}`}
               onClick={() => item.subsections ? toggleDataPanel() : handleButtonClick(item.path)}
             >
               <span className="icon">{item.icon}</span>
@@ -130,7 +130,7 @@ const LandslideSidebar = () => {
                 {item.subsections.map((subItem, subIndex) => (
                   <li key={subIndex} className="sidebar-item dropdown-item">
                     <button
-                      className={`sidebar-landslide-button ${
+                      className={`sidebar-button ${
                         activePath === subItem.path ? 'active' : ''
                       }`}
                       onClick={() => handleSubsectionClick(subItem.path)}
