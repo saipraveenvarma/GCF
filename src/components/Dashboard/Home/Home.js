@@ -19,7 +19,7 @@ const Home = () => {
 
   // Function to load GeoJSON data from a specified URL
   const loadGeoJSON = (url, type) => {
-    setBoundaryData(null); // Clear any existing boundary data before loading new data
+    setBoundaryData(null);
     setActiveBoundary(type);
 
     fetch(url)
@@ -40,46 +40,55 @@ const Home = () => {
     loadGeoJSON(`${process.env.PUBLIC_URL}/DATA/OSMbased_adm0_boundary.json`, "country");
   }, []);
 
-  // Styling for each shape
+  // Base styling for each shape
   const boundaryStyle = {
-    color: "#FF0000", // Red outline for visibility
+    color: "#FF0000",
     weight: 2,
-    fillOpacity: 0.1
+    fillOpacity: 0,
   };
 
-  // Function to display appropriate popup based on boundary type
   const onEachFeature = (feature, layer) => {
     let popupContent = "";
     if (activeBoundary === "country" && feature.properties) {
       const { ADM0, ADM_code, Municipio, PostoAdmin, Sucos, Aldeias } = feature.properties;
       popupContent = `
-        <b>Country:</b> ${ADM0 || "N/A"}<br />
-        <b>Code:</b> ${ADM_code || "N/A"}<br />
-        <b>Municipalities:</b> ${Municipio || "N/A"}<br />
-        <b>PostoAdmin:</b> ${PostoAdmin || "N/A"}<br />
-        <b>Sucos:</b> ${Sucos || "N/A"}<br />
-        <b>Aldeias:</b> ${Aldeias || "N/A"}<br />
+        <b>🗺️ Country:</b> ${ADM0 || "N/A"}<br />
+        <b>📍 Code:</b> ${ADM_code || "N/A"}<br />
+        <b>🏙️ Municipalities:</b> ${Municipio || "N/A"}<br />
+        <b>📍 PostoAdmin:</b> ${PostoAdmin || "N/A"}<br />
+        <b>🏘️ Sucos:</b> ${Sucos || "N/A"}<br />
+        <b>🏡 Aldeias:</b> ${Aldeias || "N/A"}<br />
       `;
     } else if (activeBoundary === "municipality" && feature.properties) {
       const { ADM1, ADM_Code, area_sqkm, Population, Male_Pop, Female_Pop } = feature.properties;
       popupContent = `
-        <b>Municipality:</b> ${ADM1 || "N/A"}<br />
-        <b>Code:</b> ${ADM_Code || "N/A"}<br />
-        <b>Area (sq km):</b> ${area_sqkm || "N/A"}<br />
-        <b>Population:</b> ${Population || "N/A"}<br />
-        <b>Male Population:</b> ${Male_Pop || "N/A"}<br />
-        <b>Female Population:</b> ${Female_Pop || "N/A"}<br />
+        <b>🏙️ Municipality:</b> ${ADM1 || "N/A"}<br />
+        <b>📍 Code:</b> ${ADM_Code || "N/A"}<br />
+        <b>📏 Area (sq km):</b> ${area_sqkm || "N/A"}<br />
+        <b>👥 Population:</b> ${Population || "N/A"}<br />
+        <b>👨 Male Population:</b> ${Male_Pop || "N/A"}<br />
+        <b>👩 Female Population:</b> ${Female_Pop || "N/A"}<br />
       `;
     } else if (activeBoundary === "sub-municipality" && feature.properties) {
       const { ADM2, ADM1, ADM_Code, area_sqkm } = feature.properties;
       popupContent = `
-        <b>Sub-Municipality:</b> ${ADM2 || "N/A"}<br />
-        <b>Municipality:</b> ${ADM1 || "N/A"}<br />
-        <b>Code:</b> ${ADM_Code || "N/A"}<br />
-        <b>Area (sq km):</b> ${area_sqkm || "N/A"}<br />
+        <b>🏘️ Sub-Municipality:</b> ${ADM2 || "N/A"}<br />
+        <b>🏙️ Municipality:</b> ${ADM1 || "N/A"}<br />
+        <b>📍 Code:</b> ${ADM_Code || "N/A"}<br />
+        <b>📏 Area (sq km):</b> ${area_sqkm || "N/A"}<br />
       `;
     }
     layer.bindPopup(popupContent);
+  
+    // Event listeners for changing fill opacity when popup is opened/closed
+    layer.on({
+      popupopen: () => {
+        layer.setStyle({ fillOpacity: 0.5 }); // Active fill opacity
+      },
+      popupclose: () => {
+        layer.setStyle({ fillOpacity: 0 }); // Reset fill opacity
+      }
+    });
   };
 
   return (
