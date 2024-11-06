@@ -114,6 +114,77 @@ const Home = () => {
         </div>
       </div>
 
+ {/* Disaster Data Boxes */}
+<div className="disaster-boxes">
+  {[
+    {
+      title: "🌪️ Cyclone",
+      color: "#e0f7fa",
+      data: {
+        "💨 Wind Speed": "120 km/h",
+        "📍 Affected Areas": "5",
+        "🔥 Intensity": "Severe",
+        "⚠️ Warnings Issued": "12",
+      },
+    },
+    {
+      title: "🗻 Landslide",
+      color: "#f1f8e9",
+      data: {
+        "📍 Affected Areas": "3",
+        "🪨 Debris Volume": "500 m³",
+        "🚨 Evacuations": "200",
+        "💀 Fatalities": "2",
+      },
+    },
+    {
+      title: "🌊 Flood",
+      color: "#e8f5e9",
+      data: {
+        "📈 Water Level Rise": "1.5 m",
+        "👫 Affected People": "5000",
+        "🚨 Evacuations": "300",
+      },
+    },
+    {
+      title: "🌍 Earthquake",
+      color: "#fce4ec",
+      data: {
+        "🌡️ Magnitude": "6.5",
+        "📏 Depth": "10 km",
+        "🔁 Aftershocks": "15",
+        "📍 Affected Areas": "2",
+      },
+    },
+    {
+      title: "🔥 City Fire",
+      color: "#ffebee",
+      data: {
+        "🏢 Buildings Affected": "10",
+        "🧑‍⚕️ Injuries": "15",
+        "⏰ Response Time": "5 mins",
+      },
+    },
+    {
+      title: "🚗 Road Accidents",
+      color: "#f3e5f5",
+      data: {
+        "🚨 Incidents Today": "3",
+        "🧑‍⚕️ Injuries": "7",
+        "💀 Fatalities": "1",
+        "⏰ Response Time": "10 mins",
+      },
+    },
+  ].map((disaster, i) => (
+    <div className="disaster-box" key={i} style={{ backgroundColor: disaster.color }}>
+      <h3>{disaster.title}</h3>
+      {Object.entries(disaster.data).map(([key, value]) => (
+        <p key={key}><b>{key}:</b> {value}</p>
+      ))}
+    </div>
+  ))}
+</div>
+
       <div className="map-section">
         <h2>Map of Timor Leste</h2>
         <div className="map-container">
